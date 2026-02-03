@@ -1,23 +1,165 @@
-# Aplicación web CRUD dockerizada desarrollada en vanilla php a implantar en un servidor de desarrollo
+# 🚗 Automovilismo 2026 – Aplicación CRUD en PHP + MariaDB + Docker
 
->IES Miguel Herrero (Torrelavega) - Curso 2025/2026
->Módulo: IAW - Implantación de Aplicaciones Web  
->Ciclo: CFGS Administración de Sistemas Informáticos en Red  
+Aplicación web CRUD desarrollada en **PHP 8.2**, utilizando **MariaDB 11** como base de datos y **Docker** para la contenedorización completa del entorno.  
+Permite gestionar usuarios y vehículos de automovilismo moderno (año 2026).
 
-Este repositorio es una **guía ejemplo** para la realización de la **actividad 6.1** de IAW en lo que se refiere al despliegue de la aplicación CRUD en <u>DESARROLLO</u>. 
+---
 
-Contiene lo siguiente: 
+## 📦 Tecnologías utilizadas
 
-* Directorio */.github/workflows*: Contiene ejemplos de flujos de trabajo o "workflows" (Github Actions de GitHub). Orientados a la implementación de "pipeline" o tuberías CI/CD.
-* Directorio */conf*: Contiene el archivo de configuración sitio web por defecto en Apache.
-* Directorio */sql*: Contiene un archivo con un script SQL para la inicialización de la BD de MariaDB
-* Directorio */src*: Contiene un ejemplo de código correspondiente a la Aplicación web CRUD PHP . Implementa altas, bajas, modificaciones y listado de una pequeña tabla. Servirá de modelo para la realización de esta actividad.
-* Directorio /src/html: Contiene el modelo de Aplicación web anterior pero solo la parte ESTÁTICA (sin PHP).
-* Archivo .env: Configuración de variables de entorno (Contraseña Root, nombre BD, usuario BD y contraseña BD) utilizadas por el archivo docker-compose.yml.
-* Archivo Dockerfile: Instrucciones para la construcción de la imagen correspondiente a la aplicación web.
-* Archivo docker-compose.yml: Modelo escenario de contenedores para el despliegue de la aplicación PHP. Contiene 3 servicios: 
-1. *apache-php-crud*: Aplicación CRUD PHP implantada en un contenedor con Ubuntu 24.04, servidor web Apache 2.0 y php 8.0.
-2. *mariadb*: Sistema gestor de base de datos en MariaDB
-3. *phpmyadmin*: Herramienta web para gestionar bases de datos MySQL/MariaDB
+- PHP 8.2 + Apache  
+- MariaDB 11  
+- Docker & Docker Compose  
+- PDO (PHP Data Objects)  
+- HTML5 + CSS básico  
+- Sesiones para autenticación  
 
+---
 
+## 📁 Estructura del proyecto
+
+```
+conf/
+ └── 000-default.conf
+docker-compose.yml
+Dockerfile
+.env
+sql/
+ └── database.sql
+src/
+ ├── add.php
+ ├── add_action.php
+ ├── config.php
+ ├── delete.php
+ ├── edit.php
+ ├── edit_action.php
+ ├── home.php
+ ├── index.php
+ ├── login.php
+ ├── login_action.php
+ ├── logout.php
+ ├── registro.php
+ └── registro_action.php
+```
+
+---
+
+## 🗄 Base de datos
+
+El archivo `sql/database.sql` crea:
+
+### Tabla `usuarios`
+- `usuario_id` (PK)
+- `nombre_usuario`
+- `contraseña` (hash bcrypt)
+- `correo` (UNIQUE)
+- `creacion` (timestamp)
+
+### Tabla `vehiculos`
+- `vehiculo_id` (PK)
+- `marca`
+- `modelo`
+- `anio`
+- `potencia`
+- `categoria`
+- `vin` (UNIQUE)
+
+Incluye datos de ejemplo para ambas tablas.
+
+---
+
+## ⚙️ Configuración del entorno
+
+### 1. Crear archivo `.env`
+
+Debe estar en la raíz del proyecto:
+
+```env
+MYSQL_ROOT_PASSWORD=SamuelSaez@2006
+MYSQL_DATABASE=automovilismo2026
+MYSQL_USER=usuarioSaSa
+MYSQL_PASSWORD=SamuelSaez@2006
+```
+
+Permisos recomendados:
+
+```bash
+chmod 644 .env
+```
+
+---
+
+## ▶️ Puesta en marcha
+
+Ejecuta:
+
+```bash
+docker-compose up --build
+```
+
+Esto levantará:
+
+- Contenedor **MariaDB**
+- Contenedor **PHP + Apache**
+- Inicialización automática de la base de datos con datos de ejemplo
+
+Accede a la aplicación en:
+
+```
+http://localhost:8080
+```
+
+---
+
+## 🔐 Usuarios de prueba
+
+| Usuario        | Correo           | Contraseña        |
+|----------------|------------------|-------------------|
+| admin          | admin@demo.com   | Admin2026!        |
+| maria_racing   | maria@demo.com   | MariaRacing#1     |
+| juan_speed     | juan@demo.com    | SpeedJuan_2026    |
+
+---
+
+## 🧩 Funcionalidades
+
+### ✔ Autenticación
+- Registro de usuarios  
+- Inicio de sesión  
+- Cierre de sesión  
+- Protección de rutas mediante sesiones  
+
+### ✔ CRUD de vehículos
+- Crear vehículos  
+- Listar vehículos  
+- Editar vehículos  
+- Eliminar vehículos  
+
+---
+
+## 🛠 Comandos útiles
+
+Reconstruir el contenedor web:
+
+```bash
+docker-compose build web
+```
+
+Reiniciar todo desde cero (incluye borrar volúmenes):
+
+```bash
+docker-compose down -v
+docker-compose up --build
+```
+
+Ver logs:
+
+```bash
+docker-compose logs -f
+```
+
+---
+
+## 📜 Licencia
+
+Este proyecto puede utilizar la licencia que prefieras (MIT, GPL, etc.).

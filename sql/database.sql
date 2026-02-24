@@ -93,5 +93,15 @@ VALUES
 ('Nebula', 'StormBlade', 2026, 1000, 'Prototype', 'VIN2026NBLSB028'),
 ('StratoSpeed', 'SS-5000', 2026, 1150, 'Hypercar', 'VIN2026SS5000029'),
 ('Falcon Motors', 'FM-X1', 2026, 1050, 'Prototype', 'VIN2026FLX10030'),
-('Omega', 'Phantom GT-X', 2026, 1400, 'Hypercar', 'VIN2026OMGPHX030');
+('Omega', 'Phantom GT-X', 2026, 1400, 'Hypercar', 'VIN2026OMGPHX030'),
+('Vortex', 'VX-1 Cyclone', 2026, 1250, 'Prototype', 'VIN2026VORTVX1031'),
+('Eclipse Engineering', 'Eclipse GT-Z', 2026, 1100, 'Hybrid GT', 'VIN2026ECLGTZ032'),
+('NovaSpeed', 'HyperFlux S', 2026, 1350, 'Prototype', 'VIN2026NVSFLUXS033'),
+('Quantum Motors', 'QX-2 Velocity', 2026, 1150, 'Hypercar', 'VIN2026QTMQVLY2_034'),
+('CyberRacer', 'X-100 Plasma', 2026, 1500, 'Prototype', 'VIN2026CYBX100P035'),
+('StratoSpeed', 'SS-6000', 2026, 1200, 'Hypercar', 'VIN2026SS6000036'),
+('Vulcan', 'Inferno S', 2026, 1250, 'Hypercar', 'VIN2026VLCINF037'),
+('Nebula', 'StormBlade S', 2026, 1100, 'Prototype', 'VIN2026NBLSBS038'),
+('Falcon Motors', 'FM-X2', 2026, 1100, 'Prototype', 'VIN2026FLX20039'),
+('Omega', 'Phantom GT-Z', 2026, 1500, 'Hypercar', 'VIN2026OMGPHZ040');
 -- ============================================

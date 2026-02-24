@@ -9,7 +9,7 @@
 
 <style>
 body {
-    background-image: url('https://images.unsplash.com/photo-1610465299996-7f24f8206dfa');
+    background-image: url('https://www.supercars.net/blog/wp-content/uploads/2020/07/982782-scaled.jpg');
     margin: 0;
     padding: 0;
 }

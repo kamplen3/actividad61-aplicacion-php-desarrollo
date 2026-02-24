@@ -98,7 +98,11 @@ Esto levantará:
 Accede a la aplicación en:
 
 ```
-http://localhost:8080
+http://35.174.72.31/ (Desarrollo)
+```
+
+```
+http://52.200.98.147/ (Producción)
 ```
 
 ---

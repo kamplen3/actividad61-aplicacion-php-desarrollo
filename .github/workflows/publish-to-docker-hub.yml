@@ -1,44 +1,48 @@
-name: CI/CD Docker PHP App
-# Descripción: Este workflow se encarga de construir la imagen Docker de la aplicación PHP, subirla a Docker Hub y desplegarla en un servidor de producción mediante SSH.
+name: CI/CD - Build, Push & Deploy CRUD App
+
 on:
   push:
-    branches: [ "main" ] # Se activa al subir cambios a la rama main
+    branches:
+      - main
 
 jobs:
   build-and-push:
+    name: Build & Push Docker Image
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      # Tarea 7: Construcción de la imagen (BUILD)
-      - name: Iniciar sesión en Docker Hub
+      - name: Login en Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - name: Construir y subir imagen a Docker Hub (PUSH)
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/actividad61-aplicacion-crud-php:latest
+      - name: Construir y etiquetar la imagen (BUILD)
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/lamp-crud-app:latest .
+
+      - name: Subir imagen a Docker Hub (PUSH)
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/lamp-crud-app:latest
 
   deploy:
-    needs: build-and-push
+    name: Deploy to AWS Server
     runs-on: ubuntu-latest
+    needs: build-and-push
+
     steps:
-      # Tarea 7: Conexión remota por SSH y despliegue (PULL & RUN)
-      - name: Desplegar en servidor de producción vía SSH
-        uses: appleboy/ssh-action@master
+      - name: Despliegue en servidor de producción
+        uses: appleboy/ssh-action@v1.2.1
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ~/actividad61-aplicacion-php-produccion [cite: 110]
-            docker compose down 
-            docker compose pull [cite: 122]
-            docker compose up -d [cite: 121]
+            cd ~/repositorios/actividad61-aplicacion-php-produccion
+            docker compose down
+            docker compose pull
+            docker compose up -d

@@ -81,14 +81,6 @@ MYSQL_USER=usuarioSaSa
 MYSQL_PASSWORD=SamuelSaez@2006
 ```
 
-Permisos recomendados:
-
-```bash
-chmod 644 .env
-```
-
----
-
 ## ▶️ Puesta en marcha
 
 Ejecuta:
@@ -115,9 +107,9 @@ http://localhost:8080
 
 | Usuario        | Correo           | Contraseña        |
 |----------------|------------------|-------------------|
-| admin          | admin@demo.com   | Admin2026!        |
-| maria_racing   | maria@demo.com   | MariaRacing#1     |
-| juan_speed     | juan@demo.com    | SpeedJuan_2026    |
+| admin          | admin@admin.com  | 12345             |
+| maria_racing   | maria@usuario.com| 12345             |
+| juan_speed     | juan@usuario.com | 12345             |
 
 ---
 
@@ -137,14 +129,6 @@ http://localhost:8080
 
 ---
 
-## 🛠 Comandos útiles
-
-Reconstruir el contenedor web:
-
-```bash
-docker-compose build web
-```
-
 Reiniciar todo desde cero (incluye borrar volúmenes):
 
 ```bash
@@ -159,7 +143,3 @@ docker-compose logs -f
 ```
 
 ---
-
-## 📜 Licencia
-
-Este proyecto puede utilizar la licencia que prefieras (MIT, GPL, etc.).

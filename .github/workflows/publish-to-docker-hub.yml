@@ -22,11 +22,11 @@ jobs:
 
       - name: Construir y etiquetar la imagen (BUILD)
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/lamp-crud-app:latest .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/lamp-crud-app:latest .
 
       - name: Subir imagen a Docker Hub (PUSH)
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/lamp-crud-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/lamp-crud-app:latest
 
   deploy:
     name: Deploy to AWS Server

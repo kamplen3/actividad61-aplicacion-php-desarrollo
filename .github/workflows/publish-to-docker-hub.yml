@@ -23,8 +23,7 @@ jobs:
         with:
           context: .
           push: true
-          # El nombre sigue el formato: usuario/actividad61-aplicacion-crud-php:latest
-          [cite_start]tags: ${{ secrets.DOCKERHUB_USERNAME }}/actividad61-aplicacion-crud-php:latest [cite: 107]
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/actividad61-aplicacion-crud-php:latest
 
   deploy:
     needs: build-and-push

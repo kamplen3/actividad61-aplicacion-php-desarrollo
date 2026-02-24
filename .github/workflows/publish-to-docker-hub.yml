@@ -1,5 +1,5 @@
 name: CI/CD Docker PHP App
-
+# Descripción: Este workflow se encarga de construir la imagen Docker de la aplicación PHP, subirla a Docker Hub y desplegarla en un servidor de producción mediante SSH.
 on:
   push:
     branches: [ "main" ] # Se activa al subir cambios a la rama main

@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ~/repositorios/actividad61-aplicacion-php-produccion
+            cd ~/actividad61-aplicacion-php-produccion
             docker compose down
             docker compose pull
             docker compose up -d

@@ -5,3 +5,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /var/www/html
+COPY src/ .
+
+RUN chown -R www-data:www-data /var/www/html

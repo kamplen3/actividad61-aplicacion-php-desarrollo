@@ -18,7 +18,7 @@ $vehiculo = $stmt->fetch();
 
 <style>
 body {
-    background-image: url('https://images.unsplash.com/photo-1610465299996-7f24f8206dfa');
+    background-image: url('https://cdn.motor1.com/images/mgl/g4lw2P/s1/2024-subaru-wrx-rally-car.webp');
     margin: 0;
     padding: 0;
 }
